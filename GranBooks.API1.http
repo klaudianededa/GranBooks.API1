@@ -1,6 +1,6 @@
-@GranBooks.API1_HostAddress = http://localhost:5161
+@GranBooks.API_HostAddress = http://localhost:5161
 
-GET {{GranBooks.API1_HostAddress}}/weatherforecast/
+GET {{GranBooks.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

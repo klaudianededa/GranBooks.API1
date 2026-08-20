@@ -1,4 +1,4 @@
-﻿namespace GranBooks.API1.Models
+﻿namespace GranBooks.API.Models
 {
     public class Livro
     {
