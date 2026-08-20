@@ -1,0 +1,6 @@
+@GranBooks.API1_HostAddress = http://localhost:5161
+
+GET {{GranBooks.API1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
