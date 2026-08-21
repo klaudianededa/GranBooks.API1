@@ -8,5 +8,7 @@ namespace GranBooks.API.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Livro> Livros { get; set; }
+
+        public DbSet<Emprestimo> Emprestimos { get; set; }
     }
 }
