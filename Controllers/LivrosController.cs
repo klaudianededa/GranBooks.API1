@@ -1,11 +1,11 @@
 ﻿using GranBooks.API.Data;
 using GranBooks.API.Models;
-using GranBooks.API1.Data;
-using GranBooks.API1.Models;
+using GranBooks.API.Data;
+using GranBooks.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace GranBooks.API1.Controllers
+namespace GranBooks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -93,6 +93,25 @@ namespace GranBooks.API1.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // PUT: api/livros/5/retirar
+        [HttpPut("{id}/retirar")]
+        public async Task<IActionResult> RetirarLivro(int id)
+        {
+            var livro = await _context.Livros.FindAsync(id);
+
+            if (livro == null) return NotFound();
+
+            if (livro.Copias <= 0)
+            {
+                return BadRequest("Não há cópias disponíveis.");
+            }
+
+            livro.Copias -= 1; // Abate do estoque no MySQL
+            await _context.SaveChangesAsync();
+
+            return Ok(livro); // Devolve o livro atualizado para o Angular
         }
     }
 }
