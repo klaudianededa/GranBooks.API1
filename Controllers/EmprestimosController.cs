@@ -40,11 +40,12 @@ namespace GranBooks.API.Controllers
             // Diminui o estoque
             livro.Copias -= 1;
 
-            // Cria o registro do empréstimo
+            // Cria o registro do empréstimo com 7 dias de prazo
             var emprestimo = new Emprestimo
             {
                 LivroId = livroId,
                 DataEmprestimo = DateTime.Now,
+                DataPrevisaoDevolucao = DateTime.Now.AddDays(7), 
                 Status = "Ativo"
             };
 
